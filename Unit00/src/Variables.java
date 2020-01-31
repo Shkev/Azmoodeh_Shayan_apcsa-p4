@@ -1,11 +1,3 @@
-//(c) A+ Computer Science
-//www.apluscompsci.com
-
-//Name -
-//Date -
-//Class -
-//Lab  -
-
 public class Variables
 {
 	public static void main ( String[] args )
@@ -21,7 +13,7 @@ public class Variables
 		short shortOne = 5;
 		int num = 10;
 		long longOne = 9999999;
-		
+
 		//decimal variables
 		float floatOne = 1.234f;
 		double doubleOne = 1.222222222222222f;
