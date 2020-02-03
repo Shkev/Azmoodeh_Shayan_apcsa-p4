@@ -6,7 +6,7 @@ public class Line
 		System.out.println(y_diff);
 		int x_diff = x2 - x1;
 		System.out.println(x_diff);
-		double slope = y_diff / x_diff;
+		double slope = (double)y_diff / x_diff;
 		return slope;
 	}
 
