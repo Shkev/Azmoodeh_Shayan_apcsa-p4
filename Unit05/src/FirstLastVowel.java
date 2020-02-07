@@ -1,6 +1,6 @@
 public class FirstLastVowel
 {
-	static char vowels[] = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
+	static private char vowels[] = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
 	public static String go( String a )
 	{
 		for (int i = 0; i < 10; i++)
