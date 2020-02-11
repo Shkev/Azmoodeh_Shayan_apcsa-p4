@@ -78,6 +78,18 @@ public class Magpie4
 		{
 			response = transformIWantStatement(statement);
 		}
+		else if ((findKeyword(statement, "you") >= 0
+						&& findKeyword(statement, "me") >= findKeyword(statement, "you"))
+				|| (findKeyword(statement, "You") >= 0
+						&& findKeyword(statement, "me") >= findKeyword(statement, "You")))
+		{
+			response = transformYouMeStatement(statement);
+		}
+		else if (findKeyword(statement, "I") >= 0
+				&& findKeyword(statement, "you") >= findKeyword(statement, "I"))
+		{
+			response = transformIYouStatement(statement);
+		}
 		else
 		{
 			response = getRandomResponse();
@@ -148,7 +160,20 @@ public class Magpie4
 		return "What makes you think that I " + restOfStatement + " you?";
 	}
 	
-	
+	private String transformIYouStatement(String statement)
+	{
+		//Removing period at the end of the statement
+		statement.trim();
+		char lastChar = statement.charAt(statement.length()-1);
+		if (lastChar == '.')
+		{
+			statement = statement.substring(0, statement.length() - 1);
+		}
+		int psnOfI = findKeyword(statement, "I", 0);
+		int psnOfYou = findKeyword(statement, "you", psnOfI + 1);
+		String restOfStatement = statement.substring(psnOfI + 1, psnOfYou);
+		return "Why do you " + restOfStatement + " me?";
+	}
 
 	
 	
