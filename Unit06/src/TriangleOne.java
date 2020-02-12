@@ -10,18 +10,29 @@ public class TriangleOne
 
 	public TriangleOne()
 	{
-		word="";
+		word = "";
 	}
 
 	public TriangleOne(String s)
 	{
+		setWord(s);
 	}
 
 	public void setWord(String s)
 	{
+		word = s;
 	}
 
-	public void print( )
+	public void print()
 	{
+		for (int i = 0; i < word.length(); i++)
+		{
+			for (int j = 0; j < word.length() - i; j++)
+			{
+				System.out.print(word.charAt(j));
+			}
+			System.out.println();
+		}
+		System.out.println();
 	}
 }

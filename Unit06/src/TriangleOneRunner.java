@@ -4,10 +4,28 @@
 
 import static java.lang.System.*;
 
+import java.util.Scanner;
+
 public class TriangleOneRunner
 {
 	public static void main ( String[] args )
 	{
-		//add test cases		
+		Scanner scan = new Scanner(System.in);
+		TriangleOne Triangle = new TriangleOne();
+		
+		Triangle.setWord("hippo");
+		Triangle.print();
+		
+		Triangle.setWord("abcd");
+		Triangle.print();
+		
+		Triangle.setWord("it");
+		Triangle.print();
+		
+		Triangle.setWord("a");
+		Triangle.print();
+		
+		Triangle.setWord("chicken");
+		Triangle.print();
 	}
 }
