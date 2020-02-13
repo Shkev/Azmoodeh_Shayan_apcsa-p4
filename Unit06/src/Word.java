@@ -34,20 +34,16 @@ public class Word
 
 	public String getBackWards()
 	{
-		String back;
-		char ch[] = new char[word.length()];
-		int j = 0;
+		String back = "";
 		for (int i = word.length() - 1; i >= 0; i--)
 		{
-			ch[i] = word.charAt(j);
-			j++;
+			back = back + word.charAt(i);
 		}
-		back = Arrays.toString(ch);
 		return back;
 	}
 
  	public String toString()
  	{
- 		return "";
+ 		return getBackWards();
 	}
 }
