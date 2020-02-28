@@ -38,13 +38,16 @@ public class Deck {
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) 
 	{
-		cards = new Card[(values.length)*(suits.length)];
+		cards = new Card[(ranks.length)*(suits.length)];
 		size = cards.length;
-		for (int i = 0; i < ranks.length; i++)
+		int index = 0;
+		for (int i = 0; i < suits.length; i++)
 		{
-			cards[i].setRank(ranks[i]);
-			cards[i].setSuit(suits[i]);
-			cards[i].setValue(values[i]);
+			for (int j = 0; j < ranks.length; j++)
+			{
+				cards[index] = new Card(ranks[j], suits[i], values[j]);
+				index++;
+			}
 		}
 		this.shuffle();
 	}
@@ -101,7 +104,7 @@ public class Deck {
 		String rtn = "size = " + size + "\nUndealt cards: \n";
 
 		for (int k = size - 1; k >= 0; k--) {
-			rtn = rtn + cards[k].toString();
+			rtn = rtn + cards[k];
 			if (k != 0) {
 				rtn = rtn + ", ";
 			}
@@ -112,7 +115,7 @@ public class Deck {
 
 		rtn = rtn + "\nDealt cards: \n";
 		for (int k = cards.length - 1; k >= size; k--) {
-			rtn = rtn + cards[k].toString();
+			rtn = rtn + cards[k];
 			if (k != size) {
 				rtn = rtn + ", ";
 			}

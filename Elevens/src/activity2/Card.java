@@ -33,23 +33,8 @@ public class Card
 	 */
 	public Card(String cardRank, String cardSuit, int cardPointValue) 
 	{
-		setRank(cardRank);
-		setSuit(cardSuit);
-		setValue(cardPointValue);
-	}
-	
-	public void setRank(String cardRank)
-	{
 		rank = cardRank;
-	}
-	
-	public void setSuit(String cardSuit)
-	{
-		suit = cardSuit; 
-	}
-	
-	public void setValue(int cardPointValue)
-	{
+		suit = cardSuit;
 		pointValue = cardPointValue;
 	}
 	
@@ -106,6 +91,6 @@ public class Card
 	@Override
 	public String toString()
 	{
-		return rank() + " of " + suit() + " (point value = " + pointValue() + ")\n";
+		return rank() + " of " + suit() + " (point value = " + pointValue() + ")";
 	}
 }
