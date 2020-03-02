@@ -1,5 +1,6 @@
 package activity3;
 import static java.lang.Math.*;
+import static java.lang.System.*;
 /**
  * This class provides a convenient way to test shuffling methods.
  */
@@ -9,7 +10,7 @@ public class Shuffler {
 	 * The number of consecutive shuffle steps to be performed in each call
 	 * to each sorting procedure.
 	 */
-	private static final int SHUFFLE_COUNT = 1;
+	private static final int SHUFFLE_COUNT = 10;
 
 	/**
 	 * The number of values to shuffle.
@@ -101,7 +102,10 @@ public class Shuffler {
 	{
 		for(int k = values.length - 1; k > 0; k--)
 		{
-			
+			int r = (int)(Math.random() * (k - 0)) + 0;
+			int tmp = values[k];
+			values[k] = values[r];
+			values[r] = tmp;
 		}
 	}
 }
