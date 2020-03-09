@@ -22,5 +22,6 @@ public class TriangleWordRunner
 			System.out.print("\nDo you want to enter more sample input? ");
 			input = scan.next();
 		} while(input.equals("Y") || input.equals("y"));
+		scan.close();
 	}
 }
