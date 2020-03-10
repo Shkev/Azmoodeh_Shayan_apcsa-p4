@@ -18,7 +18,6 @@ public class Toy
 	public Toy( String nm )
 	{
 		setName(nm);
-		setCount(count);
 	}
 	
 	public int getCount()
@@ -28,7 +27,7 @@ public class Toy
 	
 	public void setCount( int cnt )
 	{
-		count = cnt++;
+		count = cnt;
 	}
 	
 	public String getName()
@@ -43,6 +42,6 @@ public class Toy
 
 	public String toString()
 	{
-	   return "" + name + count;
+	   return "" + name + " " + count;
 	}
 }
