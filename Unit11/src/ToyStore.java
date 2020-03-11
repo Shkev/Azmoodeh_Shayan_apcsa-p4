@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Arrays;
 import static java.lang.System.*;
 
 public class ToyStore
@@ -38,16 +39,25 @@ public class ToyStore
   
   	public String getMostFrequentToy()
   	{
-  		ArrayList<Toy> tmp = new ArrayList(toyList);
-  		int loc, count;
-  		for (Toy item : tmp)
+  		String res = toyList.get(0).getName();
+  		int max_count = 1, count = 1;
+  		String[] names = new String[toyList.size()];
+  		for(int i = 0; i < toyList.size(); i++)
   		{
-  			loc = count = 0;
-  			while(loc > -1)
+  			names[i] = toyList.get(i).getName();
+  		}
+  		Arrays.sort(names);
+  		for(int i = 1; i < names.length; i++)
+  		{
+  			if(names[i].equals(names[i+1]))
+  				count++;
+  			else 
   			{
-  				loc = tmp.indexOf(item);
-  				if (loc > -1)
-  					tmp.remove(loc);
+  				if(count > max_count)
+  				{
+  					max_count = count;
+  					res = names[i];
+  				}
   				count++;
   			}
   		}
@@ -56,8 +66,21 @@ public class ToyStore
   
   	public void sortToysByCount()
   	{
+  		ArrayList<Toy> tmp = new ArrayList(toyList);
+  		int loc, count;
+  		for(Toy item : tmp)
+  		{
+  			count = loc = 0;
+  			while(loc > -1)
+  			{
+  				loc = tmp.indexOf(item);
+  				tmp.remove(loc);
+  				count++;
+  			}
+  			toyList.get(toyList.indexOf(item)).setCount(count);
+  		}
   	}  
-  	  
+  	
 	public String toString()
 	{
 	   return "";
