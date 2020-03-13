@@ -18,6 +18,11 @@ public class ToyStore
 		toyList = new ArrayList<Toy>();
 	}
 
+	public void test()
+	{
+		System.out.println(toyList.get(0).getName() + findCount(toyList.get(0)));
+	}
+	
 	public void loadToys( String toys )
 	{
 		String[] toysArr = toys.split(" ");
@@ -26,7 +31,7 @@ public class ToyStore
 			toyList.add(new Toy(toyName));
 		}
 	}
-  
+	
   	public Toy getThatToy( String nm )
   	{
   		for(Toy toy : toyList)
@@ -36,7 +41,26 @@ public class ToyStore
   		}
   		return null;
   	}
-  
+
+  	public int findCount(Toy item)
+  	{
+  		int loc;
+  		int count = 0;
+  		ArrayList<String> names = new ArrayList<String>();
+  		for(int i = 0; i < toyList.size(); i++)
+  		{
+  			names.add(toyList.get(i).getName());
+  		}
+  		loc = names.indexOf(item.getName());
+  		while(loc > -1)
+  		{
+  			count++;
+  			names.remove(loc);
+  			loc = names.indexOf(item.getName());
+  		}
+  		return count;
+  	}
+  	
   	public String getMostFrequentToy()
   	{
   		String res = toyList.get(0).getName();
