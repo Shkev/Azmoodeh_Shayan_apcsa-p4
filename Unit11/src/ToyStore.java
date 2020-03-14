@@ -12,26 +12,29 @@ import static java.lang.System.*;
 public class ToyStore
 {
 	private ArrayList<Toy> toyList;
+	private ArrayList<String> names;
 
 	public ToyStore()
 	{
 		toyList = new ArrayList<Toy>();
+		names = new ArrayList<String>();
 	}
 
-	public void test()
-	{
-		System.out.println(toyList.get(0).getName() + findCount(toyList.get(0)));
-	}
-	
 	public void loadToys( String toys )
 	{
 		String[] toysArr = toys.split(" ");
-		for (String toyName : toysArr)
+		for(String toyName : toysArr)
 		{
-			toyList.add(new Toy(toyName));
+			if(!names.contains(toyName))
+				toyList.add(new Toy(toyName));
+			names.add(toyName);
+		}
+		for(Toy item : toyList)
+		{
+			item.setCount(findCount(item));
 		}
 	}
-	
+
   	public Toy getThatToy( String nm )
   	{
   		for(Toy toy : toyList)
@@ -46,67 +49,57 @@ public class ToyStore
   	{
   		int loc;
   		int count = 0;
-  		ArrayList<String> names = new ArrayList<String>();
-  		for(int i = 0; i < toyList.size(); i++)
-  		{
-  			names.add(toyList.get(i).getName());
-  		}
-  		loc = names.indexOf(item.getName());
+			ArrayList<String> namesTmp = new ArrayList<String>(names);
+  		loc = namesTmp.indexOf(item.getName());
   		while(loc > -1)
   		{
   			count++;
-  			names.remove(loc);
-  			loc = names.indexOf(item.getName());
+  			namesTmp.remove(loc);
+  			loc = namesTmp.indexOf(item.getName());
   		}
   		return count;
   	}
-  	
+
   	public String getMostFrequentToy()
   	{
-  		String res = toyList.get(0).getName();
-  		int max_count = 1, count = 1;
-  		String[] names = new String[toyList.size()];
-  		for(int i = 0; i < toyList.size(); i++)
-  		{
-  			names[i] = toyList.get(i).getName();
-  		}
-  		Arrays.sort(names);
-  		for(int i = 1; i < names.length; i++)
-  		{
-  			if(names[i].equals(names[i+1]))
-  				count++;
-  			else 
-  			{
-  				if(count > max_count)
-  				{
-  					max_count = count;
-  					res = names[i];
-  				}
-  				count++;
-  			}
-  		}
-  		return "";
-  	}  
-  
+			String res = "";
+			int max_count, curr_count;
+			max_count = curr_count = toyList.get(0).getCount();
+			res = toyList.get(0).getName();
+			for(Toy item : toyList)
+			{
+				curr_count = item.getCount();
+				if(curr_count > max_count)
+				{
+					res = item.getName();
+					max_count = curr_count;
+				}
+			}
+			System.out.println(res);
+			return res;
+		}
+
   	public void sortToysByCount()
   	{
-  		ArrayList<Toy> tmp = new ArrayList(toyList);
-  		int loc, count;
-  		for(Toy item : tmp)
-  		{
-  			count = loc = 0;
-  			while(loc > -1)
-  			{
-  				loc = tmp.indexOf(item);
-  				tmp.remove(loc);
-  				count++;
-  			}
-  			toyList.get(toyList.indexOf(item)).setCount(count);
-  		}
-  	}  
-  	
+			//sorted from high to low frequency
+			for(int i = 0; i+1 < toyList.size(); i++)
+			{
+				for(int j = i+1; j < toyList.size(); j++)
+				{
+					if(toyList.get(i).getCount() < toyList.get(j).getCount())
+					{
+						Toy tmp = toyList.get(i);
+						toyList.set(i, toyList.get(j));
+						toyList.set(j, tmp);
+					}
+				}
+			}
+  	}
+
 	public String toString()
 	{
-	   return "";
+		//returns sorted arraylist of toys
+		sortToysByCount();
+	   return Arrays.toString(toyList.toArray());
 	}
 }

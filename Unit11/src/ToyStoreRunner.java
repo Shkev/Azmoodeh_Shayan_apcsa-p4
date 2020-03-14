@@ -13,6 +13,7 @@ public class ToyStoreRunner
 	{
 		ToyStore test = new ToyStore();
 		test.loadToys("sorry bat sorry sorry sorry train train teddy teddy ball ball");
-		test.test();
+		test.getMostFrequentToy();
+		System.out.println(test);
 	}
 }
