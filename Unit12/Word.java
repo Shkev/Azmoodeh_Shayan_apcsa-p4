@@ -10,36 +10,36 @@ public class Word implements Comparable<Word>
 
     public Word()
     {
-	setWord("");
+    	setWord("");
     }
 
     public Word( String s )
     {
-	setWord(s);
+    	setWord(s);
     }
 
     public void setWord(String s)
     {
-	word = s;
+    	word = s;
     }
 
     public String getWord()
     {
-	return word;
+    	return word;
     }
     
     public int compareTo( Word rhs )
     {
-	if(word.length() > rhs.getWord().length())
-	    return 1;
-	else if(word.length() < rhs.getWord().length())
-	    return -1;
-	else
-	    return word.compareTo(rhs.getWord());
+    	if(word.length() > rhs.getWord().length())
+    		return 1;
+    	else if(word.length() < rhs.getWord().length())
+    		return -1;
+    	else
+    		return word.compareTo(rhs.getWord());
     }
 
     public String toString()
     {
-	return word;
+    	return word;
     }
 }

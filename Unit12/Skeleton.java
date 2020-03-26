@@ -11,58 +11,58 @@ public class Skeleton implements Monster
 
     public Skeleton()
     {
-	name = "";
-	size = 0;
+    	name = "";
+    	size = 0;
     }
 
     public Skeleton(String nm, int s)
     {
-	setMonster(nm, s);
+    	setMonster(nm, s);
     }
 
     public void setMonster(String nm, int s)
     {
-	setName(nm);
-	setSize(s);
+    	setName(nm);
+    	setSize(s);
     }
 
     public void setName(String nm)
     {
-	name = nm;
+    	name = nm;
     }
 
     public void setSize(int s)
     {
-	size = s;
+    	size = s;
     }
     
     public int getHowBig()
     {
-	return size;
+    	return size;
     }
 
     public String getName()
     {
-	return name;
+    	return name;
     }
 
     public boolean isBigger(Monster other)
     {
-	return size > other.getHowBig();
+    	return size > other.getHowBig();
     }
 
     public boolean isSmaller(Monster other)
     {
-	return size < other.getHowBig();
+    	return size < other.getHowBig();
     }
 
     public boolean namesTheSame(Monster other)
     {
-	return name.equals(other.getName());
+    	return name.equals(other.getName());
     }
 
     public String toString()
     {
-	return "" + name + " " + size + "\n";
+    	return "" + name + " " + size + "\n";
     }
 }

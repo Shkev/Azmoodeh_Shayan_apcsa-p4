@@ -12,25 +12,25 @@ public class WordRunner
 {
     public static void main( String args[] ) throws IOException
     {
-	Scanner file = new Scanner(new File("words.dat"));
+    	Scanner file = new Scanner(new File("words.dat"));
 
-	int size = file.nextInt();
-	file.nextLine();
-	String[] words = new String[size];
-	for(int i = 0; i < size; i++)
-	{
-	    words[i] = file.nextLine();
-	}
-	Arrays.sort(words, ((String a, String b) ->
-			    {
-				Word a1 = new Word(a);
-				Word b1 = new Word(b);
-				return a1.compareTo(b1);
-			    })
-		    );
-	for(String word : words)
-	{
-	    System.out.println(word);
-	}	
+    	int size = file.nextInt();
+    	file.nextLine();
+    	String[] words = new String[size];
+		for(int i = 0; i < size; i++)
+		{
+			words[i] = file.nextLine();
+		}
+		Arrays.sort(words, ((String a, String b) ->
+			    	{
+			    		Word a1 = new Word(a);
+			    		Word b1 = new Word(b);
+			    		return a1.compareTo(b1);
+			    	})
+				);
+		for(String word : words)
+		{
+			System.out.println(word);
+		}	
    }
 }
