@@ -1,5 +1,3 @@
-package classes;
-
 import java.awt.*;
 import java.awt.font.*;
 import java.awt.geom.*;
@@ -98,6 +96,63 @@ public class Picture extends SimplePicture
         pixelObj.setBlue(0);
       }
     }
+  }
+  
+  /** Method to set red to 0 */
+  public void zeroRed()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for (Pixel[] rowArray : pixels)
+	  {
+	    for (Pixel pixelObj : rowArray)
+	    {
+	    	pixelObj.setRed(0);
+	    }	
+	  }
+  }
+  
+  /** Method to set green to 0 */
+  public void zeroGreen()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for(Pixel[] row : pixels)
+	  {
+		  for(Pixel pixelObj : row)
+		  {
+			  pixelObj.setGreen(0);
+		  }
+	  }
+  }
+  
+  /** Method to negate colors of pixels */
+  public void negate() 
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for(Pixel[] row : pixels)
+	  {
+		  for(Pixel pixelObj : row)
+		  {
+			  pixelObj.setBlue(255 - pixelObj.getBlue());
+			  pixelObj.setRed(255 - pixelObj.getRed());
+			  pixelObj.setGreen(255 - pixelObj.getGreen());
+		  }
+	  }
+  }
+  
+  /** Method to convert pixels to grayscale */
+  public void grayscale() 
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for(Pixel[] row : pixels)
+	  {
+		  for(Pixel pixelObj : row)
+		  {
+			  int avg = (pixelObj.getBlue() + pixelObj.getRed() + pixelObj.getGreen()) / 3;
+			  pixelObj.setBlue(avg);
+			  pixelObj.setRed(avg);
+			  pixelObj.setGreen(avg);
+		  }
+	  }
   }
   
   /** Method that mirrors the picture around a 
@@ -225,7 +280,7 @@ public class Picture extends SimplePicture
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("beach.jpg");
+    Picture beach = new Picture("/Users/shayanazmoodeh/Documents/CS/apcsa/Unit16_PixLab/src/images/beach.jpg");
     beach.explore();
     beach.zeroBlue();
     beach.explore();

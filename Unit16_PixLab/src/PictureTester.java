@@ -1,5 +1,3 @@
-package classes;
-
 /**
  * This class contains class (static) methods
  * that will help you test the Picture class 
@@ -10,10 +8,11 @@ package classes;
  */
 public class PictureTester
 {
+	
   /** Method to test zeroBlue */
   public static void testZeroBlue()
   {
-    Picture beach = new Picture("beach.jpg");
+    Picture beach = new Picture("/Users/shayanazmoodeh/Documents/CS/apcsa/Unit16_PixLab/src/images/beach.jpg");
     beach.explore();
     beach.zeroBlue();
     beach.explore();
@@ -22,7 +21,7 @@ public class PictureTester
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
   {
-    Picture caterpillar = new Picture("caterpillar.jpg");
+    Picture caterpillar = new Picture("/Users/shayanazmoodeh/Documents/CS/apcsa/Unit16_PixLab/src/images/caterpillar.jpg");
     caterpillar.explore();
     caterpillar.mirrorVertical();
     caterpillar.explore();
@@ -31,7 +30,7 @@ public class PictureTester
   /** Method to test mirrorTemple */
   public static void testMirrorTemple()
   {
-    Picture temple = new Picture("temple.jpg");
+    Picture temple = new Picture("/Users/shayanazmoodeh/Documents/CS/apcsa/Unit16_PixLab/src/images/temple.jpg");
     temple.explore();
     temple.mirrorTemple();
     temple.explore();
@@ -40,7 +39,7 @@ public class PictureTester
   /** Method to test the collage method */
   public static void testCollage()
   {
-    Picture canvas = new Picture("640x480.jpg");
+    Picture canvas = new Picture("/Users/shayanazmoodeh/Documents/CS/apcsa/Unit16_PixLab/src/images/640x480.jpg");
     canvas.createCollage();
     canvas.explore();
   }
@@ -48,19 +47,47 @@ public class PictureTester
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
   {
-    Picture swan = new Picture("swan.jpg");
+    Picture swan = new Picture("/Users/shayanazmoodeh/Documents/CS/apcsa/Unit16_PixLab/src/images/swan.jpg");
     swan.edgeDetection(10);
     swan.explore();
+  }
+  
+  /** Method to test KeepOnlyBlue */
+  public static void testKeepOnlyBlue()
+  {
+	Picture beach =  new Picture("/Users/shayanazmoodeh/Documents/CS/apcsa/Unit16_PixLab/src/images/beach.jpg"); 
+	beach.explore();
+	beach.zeroRed();
+	beach.zeroGreen();
+	beach.explore();
+  }
+  
+  /** Method to test Negate */
+  public static void testNegate()
+  {
+	  Picture arch = new Picture("/Users/shayanazmoodeh/Documents/CS/apcsa/Unit16_PixLab/src/images/arch.jpg");
+	  arch.explore();
+	  arch.negate();
+	  arch.explore();
+  }
+  
+  /** Method to test Grayscale */
+  public static void testGrayscale()
+  {
+	  Picture arch = new Picture("/Users/shayanazmoodeh/Documents/CS/apcsa/Unit16_PixLab/src/images/arch.jpg");
+	  arch.explore();
+	  arch.grayscale();
+	  arch.explore();
   }
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
   {
-    // uncomment a call here to run a test
-    // and comment out the ones you don't want
-    // to run
-    testZeroBlue();
+    /* uncomment a call here to run a test
+     and comment out the ones you don't want
+     to run*/
+    //testZeroBlue();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();

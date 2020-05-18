@@ -1,5 +1,3 @@
-package classes;
-
 public class IntArrayWorkerTester
 {
   /** method to test setMatrix */
