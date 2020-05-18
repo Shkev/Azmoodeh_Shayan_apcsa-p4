@@ -147,10 +147,27 @@ public class Picture extends SimplePicture
 	  {
 		  for(Pixel pixelObj : row)
 		  {
-			  int avg = (pixelObj.getBlue() + pixelObj.getRed() + pixelObj.getGreen()) / 3;
-			  pixelObj.setBlue(avg);
-			  pixelObj.setRed(avg);
-			  pixelObj.setGreen(avg);
+			  pixelObj.makeGrayscale();
+		  }
+	  }
+  }
+  
+  /** Method to make fish more visible under water */
+  public void fixUnderwater()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for(Pixel[] row : pixels)
+	  {
+		  for(Pixel pixelObj : row)
+		  {
+			int red = Math.abs(pixelObj.getRed() - 21);
+			int blue = Math.abs(pixelObj.getBlue() - 173);
+			int green = Math.abs(pixelObj.getGreen() - 163);
+			
+			if((red + green + blue) > 21)
+			{
+				pixelObj.makeBlack();
+			}
 		  }
 	  }
   }
@@ -175,6 +192,64 @@ public class Picture extends SimplePicture
     } 
   }
   
+  /** Method that mirrors the picture around a 
+   * vertical mirror in the center of the picture
+   * from right to left */
+ public void mirrorVerticalRightToLeft()
+ {
+   Pixel[][] pixels = this.getPixels2D();
+   Pixel leftPixel = null;
+   Pixel rightPixel = null;
+   int width = pixels[0].length;
+   for(int row = 0; row < pixels.length; row++)
+   {
+     for(int col = width - 1; col >= width / 2; col--)
+     {
+       rightPixel = pixels[row][col];
+       leftPixel = pixels[row][width - col - 1];
+       leftPixel.setColor(rightPixel.getColor());
+     }
+   } 
+ }
+  
+  /** Method that mirrors the picture around a 
+   * horizontal mirror in the center of the picture
+   * from top to bottom */
+ public void mirrorHorizontal()
+ {
+   Pixel[][] pixels = this.getPixels2D();
+   Pixel topPixel = null;
+   Pixel bottomPixel = null;
+   int width = pixels[0].length;
+   for (int col = 0; col < width; col++)
+   {
+     for (int row = 0; row < pixels.length / 2; row++)
+     {
+       topPixel = pixels[row][col];
+       bottomPixel = pixels[pixels.length - 1 - row][col];
+       bottomPixel.setColor(topPixel.getColor());
+     }
+   } 
+ }
+  
+ /** Method that mirrors a picture around a 
+  * diagonal mirror. Like folding piece of paper
+  * from bottom left to top right corner. */
+ public void mirrorDiagonal()
+ {
+	 Pixel[][] pixels = this.getPixels2D();
+	 Pixel leftPixel, rightPixel;
+	 for(int row = 0; row < pixels.length; row++)
+	 {
+		 for(int col = 0; col < row; col++)
+		 {
+			 leftPixel = pixels[row][col];
+			 rightPixel = pixels[col][row];
+			 rightPixel.setColor(leftPixel.getColor());
+		 }
+	 }
+ }
+ 
   /** Mirror just part of a picture of a temple */
   public void mirrorTemple()
   {

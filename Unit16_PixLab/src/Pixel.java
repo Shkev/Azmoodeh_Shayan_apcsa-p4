@@ -309,6 +309,23 @@ public class Pixel
     updatePicture(alpha, getRed(), getGreen(), getBlue());
   } 
   
+  /** Method to make pixel object grayscale */
+  public void makeGrayscale()
+  {
+	  int avg = (int)getAverage();
+	  setBlue(avg);
+	  setRed(avg);
+	  setGreen(avg);
+  }
+  
+  /** Method to make pixel black */
+  public void makeBlack()
+  {
+	  setBlue(0);
+	  setGreen(0);
+	  setRed(0);
+  }
+  
   /**
   * Method to get the distance between this pixel's color and the passed color
   * @param testColor the color to compare to
