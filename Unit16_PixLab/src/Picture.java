@@ -274,6 +274,54 @@ public class Picture extends SimplePicture
     }
   }
   
+  /** Mirror arm of snowman to make him have 4 arms */
+  public void mirrorArms()
+  {
+	  int horMirrorPoint = 192;
+	  int vertMirrorPoint = 169;
+	  Pixel topPixel, bottomPixel;
+	  Pixel[][] pixels = this.getPixels2D();
+	  //loop for left arm
+	  for(int row = 157; row < horMirrorPoint; row++)
+	  {
+		  for(int col = 103; col < vertMirrorPoint; col++)
+		  {
+			  topPixel = pixels[row][col];
+			  bottomPixel = pixels[horMirrorPoint - row + horMirrorPoint][col];
+			  bottomPixel.setColor(topPixel.getColor());
+		  }
+	  }
+	  //loop for right arm
+	  horMirrorPoint = 197;
+	  vertMirrorPoint = 292;
+	  for(int row = 172; row < horMirrorPoint; row++)
+	  {
+		  for(int col = 238; col < vertMirrorPoint; col++)
+		  {
+			  topPixel = pixels[row][col];
+			  bottomPixel = pixels[horMirrorPoint - row + horMirrorPoint][col];
+			  bottomPixel.setColor(topPixel.getColor());
+		  }
+	  }
+  }
+  
+  /** Reflects Seagull to have 2 gulls on the beach */
+  public void mirrorGull()
+  {
+	  int vertMirrorPoint = 345;
+	  Pixel leftPixel, rightPixel;
+	  Pixel[][] pixels = this.getPixels2D();
+	  for(int row = 236; row < 322; row++)
+	  {
+		  for(int col = 236; col < vertMirrorPoint; col++)
+		  {
+			  leftPixel = pixels[row][col];
+			  rightPixel = pixels[row][vertMirrorPoint - col + vertMirrorPoint];
+			  rightPixel.setColor(leftPixel.getColor());
+		  }
+	  }
+  }
+  
   /** copy from the passed fromPic to the
     * specified startRow and startCol in the
     * current picture
@@ -304,7 +352,42 @@ public class Picture extends SimplePicture
       }
     }   
   }
+  
+  /** copy method that has parameters
+   * to choose what part of original image to copy
+   * @param toStartRow row to start copying to in output picture
+   * @param toStartCol col to start copying to in output picture
+   * @param fromStartRow row to start copying from in input picture
+   * @param fromStartCol col to start copying from in input picture
+   * @param fromEndRow row to copy up to (not inclusive) from input picture
+   * @param fromEndCol col to copy up to (not inclusive) from input picture
+   */
 
+  public void copy(Picture fromPic, 
+		  int toStartRow, int toStartCol, int fromStartRow, int fromStartCol,
+		  int fromEndRow, int fromEndCol)
+  {
+	  Pixel fromPixel = null;
+	  Pixel toPixel = null;
+	  Pixel[][] toPixels = this.getPixels2D();
+	  Pixel[][] fromPixels = fromPic.getPixels2D();
+	  for (int fromRow = fromStartRow, toRow = toStartRow; 
+	       fromRow < fromEndRow &&
+	       toRow < toPixels.length; 
+			  fromRow++, toRow++)
+	  {
+	    for (int fromCol = fromStartCol, toCol = toStartCol; 
+	    		fromCol < fromEndCol &&
+	    		toCol < toPixels[0].length;  
+	    		fromCol++, toCol++)
+	    {
+	    	fromPixel = fromPixels[fromRow][fromCol];
+	    	toPixel = toPixels[toRow][toCol];
+	    	toPixel.setColor(fromPixel.getColor());
+	    }
+	  } 
+  }
+  
   /** Method to create a collage of several pictures */
   public void createCollage()
   {
