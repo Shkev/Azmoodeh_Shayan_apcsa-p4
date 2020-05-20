@@ -321,9 +321,7 @@ public class Pixel
   /** Method to make pixel black */
   public void makeBlack()
   {
-	  setBlue(0);
-	  setGreen(0);
-	  setRed(0);
+	  this.setColor(Color.BLACK);
   }
   
   /**
