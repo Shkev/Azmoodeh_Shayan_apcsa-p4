@@ -124,6 +124,27 @@ public class Picture extends SimplePicture
 	  }
   }
   
+  /** Method to set red and green pixels to 0 */
+  public void keepOnlyBlue()
+  {
+	  zeroRed();
+	  zeroGreen();
+  }
+  
+  /** Method to set blue and green pixels to 0 */
+  public void keepOnlyRed()
+  {
+	  zeroBlue();
+	  zeroGreen();
+  }
+  
+  /** Method to set red and blue pixels to 0 */
+  public void keepOnlyGreen()
+  {
+	  zeroRed();
+	  zeroBlue();
+  }
+  
   /** Method to negate colors of pixels */
   public void negate() 
   {
@@ -391,8 +412,8 @@ public class Picture extends SimplePicture
   /** Method to create a collage of several pictures */
   public void createCollage()
   {
-    Picture flower1 = new Picture("flower1.jpg");
-    Picture flower2 = new Picture("flower2.jpg");
+    Picture flower1 = new Picture("/Users/shayanazmoodeh/Documents/CS/apcsa/Unit16_PixLab/src/images/flower1.jpg");
+    Picture flower2 = new Picture("/Users/shayanazmoodeh/Documents/CS/apcsa/Unit16_PixLab/src/images/flower2.jpg");
     this.copy(flower1,0,0);
     this.copy(flower2,100,0);
     this.copy(flower1,200,0);
@@ -425,10 +446,25 @@ public class Picture extends SimplePicture
         rightColor = rightPixel.getColor();
         if (leftPixel.colorDistance(rightColor) > 
             edgeDist)
-          leftPixel.setColor(Color.BLACK);
+          leftPixel.makeBlack();
         else
-          leftPixel.setColor(Color.WHITE);
+          leftPixel.makeWhite();
       }
+    }
+    Pixel topPixel, bottomPixel;
+    Color bottomColor;
+    for(int row = 0; row < pixels.length - 1; row++)
+    {
+    	for(int col = 0; col < pixels[0].length; col++)
+    	{
+    		topPixel = pixels[row][col];
+    		bottomPixel = pixels[row+1][col];
+    		bottomColor = bottomPixel.getColor();
+    		if(topPixel.colorDistance(bottomColor) > edgeDist)
+    			topPixel.makeBlack();
+    		else
+    			leftPixel.makeWhite();
+    	}
     }
   }
   

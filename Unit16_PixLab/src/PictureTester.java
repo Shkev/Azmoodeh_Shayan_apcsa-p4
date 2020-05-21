@@ -75,18 +75,41 @@ public class PictureTester
   public static void testEdgeDetection()
   {
     Picture swan = new Picture("/Users/shayanazmoodeh/Documents/CS/apcsa/Unit16_PixLab/src/images/swan.jpg");
+    swan.explore();
     swan.edgeDetection(10);
     swan.explore();
   }
   
-  /** Method to test KeepOnlyBlue */
+  /** Method to test keepOnlyBlue */
   public static void testKeepOnlyBlue()
   {
 	Picture beach =  new Picture("/Users/shayanazmoodeh/Documents/CS/apcsa/Unit16_PixLab/src/images/beach.jpg"); 
 	beach.explore();
-	beach.zeroRed();
-	beach.zeroGreen();
+	beach.keepOnlyBlue();
 	beach.explore();
+  }
+  
+  /** Method to test keepOnlyRed */
+  public static void testKeepOnlyRed()
+  {
+	Picture beach =  new Picture("/Users/shayanazmoodeh/Documents/CS/apcsa/Unit16_PixLab/src/images/beach.jpg"); 
+	beach.explore();
+	beach.keepOnlyRed();
+	beach.explore();
+  }
+  
+  /** Method to test keepOnlyGreen */
+  public static void testKeepOnlyGreen()
+  {
+	Picture beach =  new Picture("/Users/shayanazmoodeh/Documents/CS/apcsa/Unit16_PixLab/src/images/beach.jpg"); 
+	beach.explore();
+	beach.keepOnlyGreen();
+	beach.explore();
+  }
+  
+  public static void testOnlyRed()
+  {
+	  
   }
   
   /** Method to test Negate */
@@ -166,8 +189,8 @@ public class PictureTester
     //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
-    testCopy();
-    //testEdgeDetection();
+    //testCopy();
+    testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
     //testEncodeAndDecode();

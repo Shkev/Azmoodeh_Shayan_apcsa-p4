@@ -324,6 +324,12 @@ public class Pixel
 	  this.setColor(Color.BLACK);
   }
   
+  /** Method to make pixel white */
+  public void makeWhite()
+  {
+	  this.setColor(Color.WHITE);
+  }
+  
   /**
   * Method to get the distance between this pixel's color and the passed color
   * @param testColor the color to compare to
